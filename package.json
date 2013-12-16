@@ -1,0 +1,29 @@
+{
+    "name": "skype-web",
+    "version": "0.1.0",
+    "description": "Skype web client",
+    "keywords": ["skype", "web"],
+    "homepage": "https://github.com/vslinko/skype-web",
+    "bugs": {
+        "url": "https://github.com/vslinko/skype-web/issues",
+        "email": "vyacheslav.slinko@gmail.com"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Vyacheslav Slinko",
+        "email": "vyacheslav.slinko@gmail.com"
+    },
+    "bin": {
+        "skype-web": "bin/skype-web"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/vslinko/skype-web.git"
+    },
+    "dependencies": {
+        "connect": "~2.12",
+        "skype-rest": "~0.1",
+        "react-tools": "~0.5",
+        "react-page-middleware": "facebook/react-page-middleware"
+    }
+}

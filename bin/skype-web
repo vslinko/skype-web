@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+/**
+ * Skype Web
+ *
+ * Copyright (c) 2013 Vyacheslav Slinko
+ * Licensed under the MIT License
+ */
+
+
+var reactMiddleware = require('react-page-middleware');
+var skypeREST = require('skype-rest');
+var connect = require('connect');
+var path = require('path');
+
+
+var projectRoot = path.join(__dirname, '..');
+var fileServeRoot = path.join(projectRoot, 'src');
+
+var buildOptions = {
+    projectRoot: projectRoot,
+    skipES5Shim: false,
+    useBrowserBuiltins: false,
+    logTiming: true,
+    sourceMapsType: 'linked',
+    pageRouteRoot: fileServeRoot,
+    useSourceMaps: true,
+    ignorePaths: null,
+    blacklistRE: null,
+    serverRender: true,
+    dev: false
+};
+
+var app = connect();
+
+app.use(connect.json());
+app.use(skypeREST());
+app.use(reactMiddleware.provide(buildOptions));
+app.use(connect.static(fileServeRoot));
+app.use(connect.logger());
+app.use(connect.compress());
+app.use(connect.errorHandler());
+
+app.listen(3000, function() {
+    console.log('Open http://localhost:3000/');
+});
